@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>
+      netstandard2.0;net462;net47;net471;net472
+    </TargetFrameworks>
+    <Authors>Ali Abdulrahman</Authors>
+    <Description>
+      Adds ability to transpile a complex object of type Expression to JSON and send it to the server after encrypting it.
+      Adds ability to decrypt and retranspile the JSON to an Expression.
+    </Description>
+    <PackageId>Conveyor</PackageId>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="*" />
+  </ItemGroup>
+
+  <!-- .NET framework reference, compilation flags and build options -->
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' &#xA;                        OR '$(TargetFramework)' == 'net47' &#xA;                        OR '$(TargetFramework)' == 'net471' &#xA;                        OR '$(TargetFramework)' == 'net472'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+</Project>
