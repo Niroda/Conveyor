@@ -41,5 +41,12 @@ var lambda = x => userInput.Contains(x.Code);
 ## Security and Input Validation:
 To ensure the integrity and security of your application, it's crucial to sanitize user inputs. This prevents potential injection attacks and ensures that data is processed correctly. 
 
+## Acknowledgements
+I created this library back in 2018 to be used on multiple internal systems at my workplace. Some classes I found somewhere here on GitHub, and I can't really remember the repo name, but big thanks and credits to that repo/person ❤️. I've maintained the code and added the ability to send the serialized JSON over HTTP in both .NET Core and Framework. Initially, I kept it private for use within my workplace, but since I needed it for my private projects, I modified it a bit and made it available to the public.
+
+
+
+
+
 ## Conclusion:
 While Conveyor offers powerful capabilities for data processing, it requires careful management to ensure safe operation. Handle it with care to maintain seamless and secure data flows!

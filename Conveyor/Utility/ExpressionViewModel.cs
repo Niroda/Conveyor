@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Conveyor.Utility
+﻿namespace Conveyor.Utility
 {
     /// <summary>
     /// A view model to be passed to the server that holds the encrypted expression

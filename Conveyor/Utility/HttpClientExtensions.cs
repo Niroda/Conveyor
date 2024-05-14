@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -11,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Conveyor.Utility
 {
-	/// <summary>
-	/// Extensions to serialize and post an expression.
-	/// </summary>
-	public static class HttpClientExtensions
+    /// <summary>
+    /// Extensions to serialize and post an expression.
+    /// </summary>
+    public static class HttpClientExtensions
 	{
 
 		/// <summary>
