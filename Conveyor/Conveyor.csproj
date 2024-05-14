@@ -1,25 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>
-      netstandard2.0;net462;net47;net471;net472
-    </TargetFrameworks>
-    <Authors>Ali Abdulrahman</Authors>
-    <Description>
-      Adds ability to transpile a complex object of type Expression to JSON and send it to the server after encrypting it.
-      Adds ability to decrypt and retranspile the JSON to an Expression.
-    </Description>
-    <PackageId>Conveyor</PackageId>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<Authors>Ali</Authors>
+		<Description>Adds ability to transpile a complex object of type Expression to JSON and send it to the server after encrypting it.
+Adds ability to decrypt and retranspile the JSON to an Expression.
+		</Description>
+		<PackageId>Conveyor</PackageId>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Version>1.0.0</Version>
+		<PackageProjectUrl>https://github.com/Niroda/Conveyor</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/Niroda/Conveyor</RepositoryUrl>
+		<PackageIcon>conveyor.png</PackageIcon>
+		<PackageTags>Expression Serialization; JSON Conversion; Code to JSON; JSON to Code; Expression Parser; C# Expressions; .NET Serialization; Data Transformation; Expression Handling; Serialization Library; JSON Library; Code Serialization; NuGet Package; .NET Library; Expression JSON</PackageTags>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="*" />
-  </ItemGroup>
+	<ItemGroup>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
-  <!-- .NET framework reference, compilation flags and build options -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' &#xA;                        OR '$(TargetFramework)' == 'net47' &#xA;                        OR '$(TargetFramework)' == 'net471' &#xA;                        OR '$(TargetFramework)' == 'net472'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="*" />
+	</ItemGroup>
+
+	<!-- .NET framework reference, compilation flags and build options -->
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net462' &#xA; OR '$(TargetFramework)' == 'net47' &#xA; OR '$(TargetFramework)' == 'net471' &#xA; OR '$(TargetFramework)' == 'net472' &#xA; OR '$(TargetFramework)' == 'net48'">
+		<Reference Include="System.Net.Http" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Properties\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="Resources\conveyor.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 </Project>

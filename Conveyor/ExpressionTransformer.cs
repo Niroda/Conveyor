@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using Conveyor.Utility;
 using Newtonsoft.Json;
@@ -14,8 +12,6 @@ namespace Conveyor
 {
     /// <summary>
     /// Transformer class used to create a modified type of <see cref="Newtonsoft.Json.JsonConvert"/>
-    /// DON'T USE THIS CLASS DIRECTLY ON A WEB API APPLICATION!!!
-    /// USE EXTENSIONS FROM <see cref="Conveyor.Utility.HttpClientExtensions"/> INSTEAD!
     /// </summary>
     public class ExpressionTransformer : JsonConverter
     {
@@ -63,9 +59,7 @@ namespace Conveyor
 
 
         /// <summary>
-        /// Serializes given expression
-        /// DON'T USE THIS METHOD DIRECTLY ON A WEB API APPLICATION!!! <para />
-        /// USE EXTENSIONS FROM <see cref="Conveyor.Utility.HttpClientExtensions"/> INSTEAD! <para />
+        /// Serializes the given expression
         /// </summary>
         /// <typeparam name="T">Type of the expression</typeparam>
         /// <param name="expression">An instance of <see cref="System.Linq.Expressions.Expression"/> to be serialized</param>
@@ -83,27 +77,23 @@ namespace Conveyor
         }
 
 
-        /// <summary>
-        /// Deserialize given json
-        /// DON'T USE THIS METHOD DIRECTLY ON A WEB API APPLICATION!!! <para />
-        /// USE EXTENSIONS FROM <see cref="Conveyor.Utility.HttpClientExtensions"/> INSTEAD! <para />
-        /// MAKE SURE YOU PASS THE PARAMETER "type" IN CASE YOU USE THIS FUNCTION IN A DIFFERENT PROJECT THAN THE ONE WHICH SERIALIZED THE EXPRESSION
-        /// </summary>
-        /// <typeparam name="TEntity">Type of the expression to be returned</typeparam>
-        /// <typeparam name="TViewModel">Type of the passed expression</typeparam>
-        /// <param name="encryptedJson">Encrypted/Serialized expression to be deserialized</param>
-        /// <param name="type">Type of the class that will be deserialized in the given expression</param>
-        /// <returns>Deserialized <see cref="System.Linq.Expressions.Expression"/>.</returns>
-        public static Expression<Func<TEntity, bool>> DeserializeExpression<TEntity, TViewModel>(string encryptedJson, Type type = null)
+		/// <summary>
+		/// Deserialize the given json
+		/// </summary>
+		/// <typeparam name="TEntity">Type of the expression to be returned</typeparam>
+		/// <typeparam name="TViewModel">Type of the passed expression</typeparam>
+		/// <param name="encryptedJson">Encrypted/Serialized expression to be deserialized</param>
+		/// <param name="type">Type of the class that will be deserialized in the given expression</param>
+		/// <returns>Deserialized <see cref="System.Linq.Expressions.Expression"/>.</returns>
+		public static Expression<Func<TEntity, bool>> DeserializeExpression<TEntity, TViewModel>(string encryptedJson, Type type = null)
             where TEntity : class where TViewModel : class
         {
-            // It's expensive to use try/catch block, but we have to due to the place that this function will be used at.
             try
             {
 
                 string json = StringCipher.Decrypt(encryptedJson);
 
-                FixAssemblyInfo(ref json);
+                PatchAssemblyInfo(ref json);
 
                 Expression<Func<TViewModel, bool>> expression = JsonConvert.DeserializeObject<Expression<Func<TViewModel, bool>>>(
                                                                             json,
@@ -130,13 +120,13 @@ namespace Conveyor
         /// The main problem is that in core, <see cref="Expression"/> is packaged in System.Private.CoreLib assembly, and in framework is packaged in mscorelib namespace.
         /// </summary>
         /// <param name="json"></param>
-        private static void FixAssemblyInfo(ref string json)
+        private static void PatchAssemblyInfo(ref string json)
         {
             // get current assembly to determine whether is core or framework
             AssemblyName assembly = typeof(string).Assembly.GetName();
 
             // a double check in case the client uses core and the server uses framework, or vice versa.
-            // in such scenario, we must update assembly path, other wise we will get a runtime exception.
+            // in such scenario, we must update assembly path, otherwise we will get a runtime exception.
             if (json.IndexOf(assembly.ToString()) > 0)
                 return;
 
