@@ -43,9 +43,9 @@ Conveyor excels in environments where you control the creation of lambda express
 #### Install the package
 The package is available as a NuGet package and can be installed using:
   
-`dotnet add package Conveyor`  
+`dotnet add package Conveyor.DotNet`  
 Or  
-`Install-Package Conveyor`
+`Install-Package Conveyor.DotNet`
 
 #### Setting the Environment Variable
 Before running your application, you must configure the `CONVEYOR_SECRET_KEY` environment variable.
@@ -90,7 +90,7 @@ Environment.SetEnvironmentVariable("CONVEYOR_SECRET_KEY", null);
 ```
 
 ### Usage
-Refer to the `Conveyor.Sample.Api` and `Conveyor.SampleClient` projects to see how to use Conveyor.
+Refer to the `Conveyor.Sample.Api` and `Conveyor.Sample.Client` projects to see how to use Conveyor.
 
 
 ### Security and Input Validation:
