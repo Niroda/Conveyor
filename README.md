@@ -90,7 +90,7 @@ Environment.SetEnvironmentVariable("CONVEYOR_SECRET_KEY", null);
 ```
 
 ### Usage
-Refer to the `Conveyor.Sample.Api` and `Conveyor.Sample.Client` projects to see how to use Conveyor.
+Refer to the [Conveyor.Sample.Api](https://github.com/Niroda/Conveyor/tree/main/Conveyor.Sample.Api) and [Conveyor.Sample.Client](https://github.com/Niroda/Conveyor/tree/main/Conveyor.Sample.Client) projects to see how to use Conveyor.
 
 
 ### Security and Input Validation:
