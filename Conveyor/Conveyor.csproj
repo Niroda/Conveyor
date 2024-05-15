@@ -7,7 +7,7 @@
 			Adds ability to transpile a complex object of type Expression to JSON and send it to the server after encrypting it.
 			Adds ability to decrypt and retranspile the JSON to an Expression.
 		</Description>
-		<PackageId>Conveyor</PackageId>
+		<PackageId>Conveyor.DotNet</PackageId>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<Version>1.0.0</Version>
 		<PackageProjectUrl>https://github.com/Niroda/Conveyor</PackageProjectUrl>
