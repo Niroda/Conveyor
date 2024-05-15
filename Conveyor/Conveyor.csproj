@@ -9,7 +9,7 @@
 		</Description>
 		<PackageId>Conveyor.DotNet</PackageId>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<Version>1.0.0</Version>
+		<Version>2024.05.15.1825</Version>
 		<PackageProjectUrl>https://github.com/Niroda/Conveyor</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/Niroda/Conveyor</RepositoryUrl>
